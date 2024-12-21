@@ -56,6 +56,19 @@
     * [🔎 Read results of Quick Intel Scan - Telegram](developer-integration/discord-tg-bots/get-started-guides/read-results-of-quick-intel-scan-telegram.md)
     * [🔎 Read results of Quick Intel Scan - Discord](developer-integration/discord-tg-bots/get-started-guides/read-results-of-quick-intel-scan-discord.md)
 
+## 🧠 CRYPTO TERMINOLOGY
+
+* [Categories](crypto-terminology/categories/README.md)
+  * [1. Core Blockchain Concepts](crypto-terminology/categories/1.-core-blockchain-concepts.md)
+  * [2. Cryptographic Elements](crypto-terminology/categories/2.-cryptographic-elements.md)
+  * [3. Smart Contracts](crypto-terminology/categories/3.-smart-contracts.md)
+  * [4. Tokens and Assets](crypto-terminology/categories/4.-tokens-and-assets.md)
+  * [5. Trading and Exchange](crypto-terminology/categories/5.-trading-and-exchange.md)
+  * [6. DeFi (Decentralized Finance)](crypto-terminology/categories/6.-defi-decentralized-finance.md)
+  * [7. Wallets and Transactions](crypto-terminology/categories/7.-wallets-and-transactions.md)
+  * [8. Governance and Economics](crypto-terminology/categories/8.-governance-and-economics.md)
+  * [9. Technical Trading](crypto-terminology/categories/9.-technical-trading.md)
+
 ## ⁉️ TROUBLESHOOTING
 
 * [MetaMask Wallet Connect](troubleshooting/metamask-wallet-connect.md)
