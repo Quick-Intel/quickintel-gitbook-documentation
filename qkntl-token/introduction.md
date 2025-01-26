@@ -1,3 +1,9 @@
+---
+description: >-
+  QKNTL: The utility token for the Quick Intel platform. Gain exclusive access
+  to premium features and enhance your research capabilities.
+---
+
 # Introduction
 
 ## Overview of QKNTL: Enhancing the Quick Intel Platform Experience

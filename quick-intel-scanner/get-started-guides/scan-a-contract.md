@@ -1,3 +1,9 @@
+---
+description: >-
+  Performing a free crypto security scan is simple and painless.  All you need
+  is the CA (Contract Address) and the chain of the token you are interested in.
+---
+
 # 🔌 Scan A Contract
 
 ## Running a Scan

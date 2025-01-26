@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel Honeypot API endpoints provide a wealth of information.  Let's
+  dig into what we provide!
+---
+
 # Honeypot/Tax Check - Results
 
 Honeypot/Tax Check Results

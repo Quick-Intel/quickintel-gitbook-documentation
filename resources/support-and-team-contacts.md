@@ -1,3 +1,9 @@
+---
+description: >-
+  Below you will find the Quick Intel support and team contact information. 
+  Only use links from our official sources!
+---
+
 # Support & Team Contacts
 
 

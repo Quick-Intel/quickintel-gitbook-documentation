@@ -1,3 +1,9 @@
+---
+description: >-
+  Protect your crypto! Install the Quick Intel Snap for MetaMask and get
+  real-time token audit reports while swapping.
+---
+
 # Introduction
 
 ## MetaMask Snap - Quick Intel Token Audit

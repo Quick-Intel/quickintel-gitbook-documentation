@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel API "Full Audit" is the most popular endpoint as it returns
+  all audit data along with honeypot results.
+---
+
 # Quick Intel Audit Full
 
 Quick Intel Audit Full

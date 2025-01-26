@@ -1,3 +1,10 @@
+---
+description: >-
+  The Quick Intel crypto security scanner provides a wealth of information
+  digging into contracts and alerting you to both obvious malicious components
+  as well as identifying items for more DYOR.
+---
+
 # 🗺️ Scanner Overview
 
 ## Scanner Sections

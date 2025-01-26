@@ -1,6 +1,12 @@
+---
+description: >-
+  This article describes the steps needed when you are having issues connecting
+  your MetaMask wallet to the Quick Intel Web and Mobile apps.
+---
+
 # MetaMask Wallet Connect
 
-This article describes the steps needed when you are having issues connecting your MetaMask wallet to the Quick Intel Web and Mobile apps.
+
 
 {% hint style="info" %}
 MetaMask connection issues can sometimes occur when you do not complete the read-only transaction signing process, which validates your wallet. It is a known issue but is fairly easy to resolve.

@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel Discord Bot provides a great amount of security information
+  about a given token/contract.  Let's dig into the results.
+---
+
 # 🔎 Read results of Quick Intel Scan - Discord
 
 There are 4 core sections in the results of the scan, which we will dive into.

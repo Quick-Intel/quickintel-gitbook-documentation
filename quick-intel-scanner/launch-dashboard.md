@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Launch Dashboard
 
 The Quick Intel Dashboard is an innovative way for traders to get key information as a one-stop shop on projects launching across multiple chains.

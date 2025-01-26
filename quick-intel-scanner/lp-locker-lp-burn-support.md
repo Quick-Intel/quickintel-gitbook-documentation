@@ -1,3 +1,9 @@
+---
+description: >-
+  Find the Liquidity Lockers compatible with Quick Intel. Explore our list of
+  supported lockers for enhanced security and project credibility.
+---
+
 # LP Locker / LP Burn Support
 
 Quick Intel's contract scanner supports the most popular and secure LP Lock services. &#x20;

@@ -1,3 +1,9 @@
+---
+description: >-
+  All Quick Intel API calls require the use of an API key.  Let's look into
+  where to find that key.
+---
+
 # ⏳ Authentication
 
 ## API Key

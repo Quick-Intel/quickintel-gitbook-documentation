@@ -1,5 +1,7 @@
 ---
-description: 'Unlocking a New Era of Trust in Web3: Quick Intel Unveils VERIFI.'
+description: >-
+  VeriFi: Enhance your Web3 project's credibility with a premium service that
+  showcases security and compliance data to investors.
 ---
 
 # VeriFi - Project Info

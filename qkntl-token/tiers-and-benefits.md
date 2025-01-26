@@ -1,7 +1,7 @@
 ---
 description: >-
-  Information related to Quick Intel's tiers and features available in each.
-  (Subject to change)
+  Explore the tiered benefits of QKNTL holders. Gain exclusive access and
+  elevate your research within the Quick Intel ecosystem.
 ---
 
 # Tiers & Benefits

@@ -1,3 +1,9 @@
+---
+description: >-
+  Quick Intel Scanner: Identify potential risks and hidden actions within smart
+  contracts. Enhance your security with rapid, in-depth contract analysis.
+---
+
 # Introduction
 
 {% hint style="success" %}

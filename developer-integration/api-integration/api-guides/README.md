@@ -1,3 +1,9 @@
+---
+description: >-
+  Getting started with the Quick Intel API integration is easy!  Let's dig into
+  how to connect to our API service to integrate our data into your own apps.
+---
+
 # API Guides
 
 Jump to specific sections depending on if you are new to using the Quick Intel API or need a refresher on how to run the scan or read results!

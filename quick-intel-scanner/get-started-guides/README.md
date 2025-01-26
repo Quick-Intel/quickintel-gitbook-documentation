@@ -1,3 +1,9 @@
+---
+description: >-
+  Getting started with the Quick Intel Security Scanner is free and easy!  Let's
+  dig into how to use our tools to keep you safe in crypto.
+---
+
 # Get Started Guides
 
 Below are a few guides to get you started using the Quick Intel scanner:

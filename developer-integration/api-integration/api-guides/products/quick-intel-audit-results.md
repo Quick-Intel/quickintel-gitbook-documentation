@@ -1,3 +1,10 @@
+---
+description: >-
+  The Quick Intel API full audit endpoint returns a lot of information.  If you
+  don't need all of that information, the Quick Audit endpoint may be exactly
+  what you are after.
+---
+
 # Quick Intel Audit - Results
 
 ### Quick Intel Audit Results

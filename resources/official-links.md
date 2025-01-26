@@ -1,3 +1,9 @@
+---
+description: >-
+  Below are the official links for Quick Intel apps, socials, and support. 
+  Please be safe and only click links from trusted sources.
+---
+
 # Official Links
 
 ## <mark style="color:green;">Links:</mark>

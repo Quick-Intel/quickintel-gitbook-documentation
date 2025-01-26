@@ -1,3 +1,10 @@
+---
+description: >-
+  Crypto education is critical!  Here we provide various crypto term categories
+  to help educate you.  Level up by pairing this information with our free Quick
+  Intel contract scanner will.
+---
+
 # Categories
 
 ### Core Concepts

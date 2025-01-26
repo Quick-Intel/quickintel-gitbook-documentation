@@ -1,6 +1,12 @@
+---
+description: >-
+  This article describes how to bridge your QKNTL tokens to and from the
+  Ethereum, Arbitrum One chains.
+---
+
 # Bridge (ETH <> ARB)
 
-This article describes how to bridge your QKNTL tokens to and from the Ethereum, Arbitrum One chains.
+
 
 {% hint style="info" %}
 Quick Intel's bridge is a tool for transferring your QKNTL tokens between the Ethereum, and Arbitrum chains.\

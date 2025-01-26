@@ -1,5 +1,7 @@
 ---
-description: Quick Intel MetaMask Snap FAQ
+description: >-
+  Quick Intel MetaMask Snap FAQ - Get the most out of using the Snap to protect
+  yourself in crypto
 ---
 
 # Snap FAQ

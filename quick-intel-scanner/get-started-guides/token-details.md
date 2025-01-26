@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel Security Scanner returns import information regarding the
+  token such as the supply, honeypot test, and even project links.
+---
+
 # 💲 Token Details
 
 ### Project Details

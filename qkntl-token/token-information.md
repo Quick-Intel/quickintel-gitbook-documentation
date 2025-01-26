@@ -1,7 +1,7 @@
 ---
 description: >-
-  QKNTL is a utility token used to unlock extra features across the Quick Intel
-  ecosystem.
+  QKNTL is a utility token on the ETH and ARB chains used to unlock extra
+  features across the Quick Intel ecosystem.
 ---
 
 # Token Information

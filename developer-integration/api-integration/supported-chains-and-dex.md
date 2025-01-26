@@ -1,3 +1,9 @@
+---
+description: >-
+  Discover the 55+ chains and DEX(es)the Quick Intel API supports by checking
+  out the list below.
+---
+
 # Supported Chains and DEX
 
 This page will list the supported chains and DEXs, along with integrations for those wishing to link back to Quick Intel.\

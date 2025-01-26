@@ -1,3 +1,10 @@
+---
+description: >-
+  Here you will learn about the results of the deep dive that the Quick Intel
+  MetaMask Snap performs on crypto contracts.  Want more?  Simply click the link
+  in MetaMask to see our full scanner results.
+---
+
 # 👁️ View Snap Scan Results
 
 ## Viewing Scan Results

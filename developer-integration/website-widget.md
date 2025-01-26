@@ -1,5 +1,7 @@
 ---
-description: Want to integrate Quick Intel on your dApp?
+description: >-
+  Want to integrate Quick Intel Security Scanner directly into your dApp?  We
+  have you covered!  Read below on how to use the Quick Intel Scanner Widget.
 ---
 
 # Website Widget

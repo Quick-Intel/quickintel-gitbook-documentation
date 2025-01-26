@@ -1,7 +1,18 @@
 ---
 description: >-
-  Discover which chains each Quick Intel utility supports by checking out the
-  list below.
+  Discover which 55+ chains each Quick Intel utility supports by checking out
+  the list below.
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Supported Chains

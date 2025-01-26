@@ -1,3 +1,9 @@
+---
+description: >-
+  Quick Intel has both a Discord Bot and a TG (Telegram) Bot that is free to
+  use!  Start protecting your users today with our no hassle install!
+---
+
 # Discord / TG Bots
 
 ## Quick Intel Bot

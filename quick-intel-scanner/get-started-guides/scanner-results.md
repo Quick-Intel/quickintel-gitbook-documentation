@@ -1,3 +1,10 @@
+---
+description: >-
+  Here you will learn about the results of the deep dive that the Quick Intel
+  Security Scanner performs on crypto contracts.  If you need crypto contract
+  audit results, we have it!
+---
+
 # 👁️ Scanner Results
 
 ## Results Deep Dive

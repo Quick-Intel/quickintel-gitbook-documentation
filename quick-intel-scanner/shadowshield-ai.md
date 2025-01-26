@@ -1,4 +1,13 @@
+---
+description: >-
+  ShadowShield AI is Quick Intel’s AI anti-scam solution for protecting your
+  crypto. Think of it like an X-ray for smart contracts. It detects hidden
+  vulnerabilities in smart contracts.
+---
+
 # ShadowShield AI
+
+
 
 <figure><img src="../.gitbook/assets/Scanner_ShadowShield_Logo.png" alt=""><figcaption></figcaption></figure>
 

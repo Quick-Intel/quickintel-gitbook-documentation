@@ -1,3 +1,9 @@
+---
+description: >-
+  Getting started with the Quick Intel MetaMask Snap plugin is free and easy! 
+  Let's dig into how to use it to keep you safe in crypto.
+---
+
 # Snap Results Guides
 
 ## Running scans on tokens

@@ -1,3 +1,7 @@
+---
+description: Learn how to run a scan using the Quick Intel Discord Bot or Telegram Bot.
+---
+
 # 🚶 Run a Scan
 
 ## Running a scan

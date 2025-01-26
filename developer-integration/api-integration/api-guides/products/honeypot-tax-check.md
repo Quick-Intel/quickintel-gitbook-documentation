@@ -1,3 +1,10 @@
+---
+description: >-
+  The Quick Intel API provides two Honeypot/Tax endpoints.  You can call the
+  appropriate endpoint by either using the Token address or the LP address
+  depending on your needs.
+---
+
 # Honeypot/Tax Check
 
 Honeypot/Tax Check

@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel Telegram Bot provides a great amount of security information
+  about a given token/contract.  Let's dig into the results.
+---
+
 # 🔎 Read results of Quick Intel Scan - Telegram
 
 There are 5 core sections in the results of the scan, which we will dive into.

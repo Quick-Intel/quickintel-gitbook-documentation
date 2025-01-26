@@ -1,3 +1,9 @@
+---
+description: >-
+  Discover which 55+ chains the Quick Intel MetaMask Snap plugin supports by
+  checking out the list below.
+---
+
 # Supported Chains
 
 **The Quick Intel MetaMask Snap provides robust support for a wide array of EVM (Ethereum Virtual Machine) chains**, ensuring users have comprehensive access to various blockchain networks through the Quick Intel scanner.&#x20;

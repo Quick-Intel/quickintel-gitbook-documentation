@@ -1,3 +1,9 @@
+---
+description: >-
+  Performing a free crypto security scan using the Quick Intel MetaMask snap is
+  simple and painless.  Just click the tab!
+---
+
 # 🔌 Quick Intel Snap Scan
 
 ## Running a Scan

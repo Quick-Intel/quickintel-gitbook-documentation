@@ -1,3 +1,9 @@
+---
+description: >-
+  The Quick Intel API provides several endpoints (products) that you can
+  leverage.  Let's dig into the API endpoints!
+---
+
 # 🏪 Products
 
 Select the API you subscribed to to view the available endpoints.

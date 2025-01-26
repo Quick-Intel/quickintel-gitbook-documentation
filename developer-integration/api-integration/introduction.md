@@ -1,3 +1,10 @@
+---
+description: >-
+  Learn more about Quick Intel's API integration capabilities. Explore our
+  documentation and discover how to connect with our powerful crypto security
+  scan data and tools."
+---
+
 # Introduction
 
 {% hint style="info" %}
@@ -53,7 +60,7 @@ The premium plan is for anyone looking to expand their use case and medium-size 
 
 The business plan is for anyone looking to expand their use case and large-size projects.&#x20;
 
-25 calls per second & a maximum of5M calls a month
+25 calls per second & a maximum of 5M calls a month
 
 #### Custom Plan
 
