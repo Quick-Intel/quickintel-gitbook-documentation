@@ -3,12 +3,17 @@ description: >-
   Learn more about Quick Intel's API integration capabilities. Explore our
   documentation and discover how to connect with our powerful crypto security
   scan data and tools."
+icon: wagon-covered
 ---
 
 # Introduction
 
-{% hint style="info" %}
-Quick Intel's API is now publicly available!
+{% hint style="success" %}
+**For the most up-to-date API info, please use these links...**
+
+Official API Documentation: [https://developer.quickintel.io/apis](https://developer.quickintel.io/apis)
+
+API Subscription Information: [https://developer.quickintel.io/products](https://developer.quickintel.io/products)
 {% endhint %}
 
 ## Developer Portal

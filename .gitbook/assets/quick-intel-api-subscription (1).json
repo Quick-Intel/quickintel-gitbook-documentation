@@ -1,0 +1,2607 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Quick Intel API",
+        "description": "<br>Welcome to the Quick Intel Audit API Documentation!  Here you will find the information required to leverage your Quick Intel API Subscription to its maximum potential.<br><br>Quick Intel offers two levels of API subscriptions, Personal & Business:<br><br><b>Personal Plan</b><br>The personal plan is for developers looking to build small scale projects for personal use or initial stages of development. No attribution is needed for the personal plan.<br><br><b>Business Plan</b><br>The business plan is for anyone looking to expand their use case and medium-size projects. For the business plan, source attribution via a backlink or a mention that your product/service is 'Powered by Quick Intel API' is required except for personal/private usage via the Personal Plan or written approval by the Quick Intel team.<br><br>To sign up for the Quick Intel Audit API Subscription pricing and details, please go to https://developer.quickintel.io <br><br>*Note: If the Quick Intel team finds any violation of attribution requirements, Quick Intel reserves the right to immidiately disable access, without a refund, and pursue legal recourse if necessary.<br><br>",
+        "termsOfService": "https://quickintel.io/terms",
+        "contact": {
+            "name": "Quick Intel API Support",
+            "url": "https://docs.quickintel.io/developers",
+            "email": "support@quickintel.io"
+        },
+        "version": "v1"
+    },
+    "servers": [
+        {
+            "url": "https://api.quickintel.io/v1"
+        }
+    ],
+    "paths": {
+        "/getquickiaudit": {
+            "post": {
+                "summary": "Get Audit Only",
+                "description": "Returns the full audit of a contract in a single request.  If you wish to use the audit plus honeypot check in one, please use the /getquickiauditfull endpoint instead.",
+                "operationId": "Get-Audit-Only",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "chain",
+                                    "tokenAddress"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "chain": {
+                                        "type": "string",
+                                        "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                                        "example": "arbitrum"
+                                    },
+                                    "tokenAddress": {
+                                        "type": "string",
+                                        "description": "The contract address to be audited.",
+                                        "example": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "chain": "arbitrum",
+                                "tokenAddress": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request and response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tokenDetails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "tokenName": {
+                                                    "type": "string",
+                                                    "description": "The name of the contract",
+                                                    "example": "Sample Token"
+                                                },
+                                                "tokenSymbol": {
+                                                    "type": "string",
+                                                    "description": "The symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "tokenDecimals": {
+                                                    "type": "integer",
+                                                    "description": "The number of decimal places the contract uses.",
+                                                    "example": 18
+                                                },
+                                                "tokenOwner": {
+                                                    "type": "string",
+                                                    "description": "The current token owner's address.",
+                                                    "example": "0x0000000000000000000000000000000000000000"
+                                                },
+                                                "tokenSupply": {
+                                                    "type": "integer",
+                                                    "description": "The total token supply.",
+                                                    "example": 1000000000
+                                                },
+                                                "tokenCreatedDate": {
+                                                    "type": "integer",
+                                                    "description": "The timestamp of when the token was created.",
+                                                    "example": "1676135091000"
+                                                },
+                                                "quickiTokenHash": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "exact_qHash": {
+                                                            "type": "string",
+                                                            "description": "The hash for exact contracts.",
+                                                            "example": "q-6b547b152b44"
+                                                        },
+                                                        "similar_qHash": {
+                                                            "type": "string",
+                                                            "description": "The hash for similar contracts.",
+                                                            "example": "q-8870c53c2053"
+                                                        }
+                                                    },
+                                                    "description": "An object containing Quick Intel's hashes."
+                                                }
+                                            },
+                                            "description": "Returns basic token information."
+                                        },
+                                        "isScam": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract is was manually confirmed as scam by thte Quick Intel team.",
+                                            "example": "true"
+                                        },
+                                        "contractVerified": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract is verified.",
+                                            "example": "true"
+                                        },
+                                        "quickiAudit": {
+                                            "type": "object",
+                                            "properties": {
+                                                "contract_Creator": {
+                                                    "type": "string",
+                                                    "description": "The address of the wallet which created the contract.",
+                                                    "example": "0xb869ce9b5893b1727f0fd9e99e110c4917681903"
+                                                },
+                                                "contract_Owner": {
+                                                    "type": "string",
+                                                    "description": "The wallet address of the contract owner.",
+                                                    "example": "0x0000000000000000000000000000000000000000"
+                                                },
+                                                "contract_Name": {
+                                                    "type": "string",
+                                                    "description": "The name of the contract.",
+                                                    "example": "Sample Token"
+                                                },
+                                                "contract_Chain": {
+                                                    "type": "string",
+                                                    "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                                                    "example": "eth"
+                                                },
+                                                "contract_Address": {
+                                                    "type": "string",
+                                                    "description": "The address of the contract being audited.",
+                                                    "example": "0xbe042e9d09cb588331ff911c2b46fd833a3e5bd7"
+                                                },
+                                                "contract_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is renounced.",
+                                                    "example": "true"
+                                                },
+                                                "hidden_Owner": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a hidden owner.",
+                                                    "example": "false"
+                                                },
+                                                "hidden_Owner_Modifiers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": ""
+                                                    },
+                                                    "description": "An array of modifiers that can run by a hidden owner."
+                                                },
+                                                "is_Proxy": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract uses a proxy contract.",
+                                                    "example": "false"
+                                                },
+                                                "proxy_Implementation": {
+                                                    "type": "string",
+                                                    "description": "The address of the proxy contract if one exists.",
+                                                    "example": "null"
+                                                },
+                                                "has_External_Contract_Risk": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has embedded external contracts that can control this contract.",
+                                                    "example": "false"
+                                                },
+                                                "external_Contracts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Contract address."
+                                                    },
+                                                    "description": "List of external contracts this contract has enabled."
+                                                },
+                                                "has_Obfuscated_Address_Risk": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has one or more obfuscated addresses embedded in the contract.  These are hidden address that can be either a contract or address masked as a numberic value.",
+                                                    "example": "false"
+                                                },
+                                                "obfuscated_Address_List": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Contract address."
+                                                    },
+                                                    "description": "List of obfuscated addresses in the contract."
+                                                },
+                                                "can_Mint": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of minting tokens.",
+                                                    "example": "false"
+                                                },
+                                                "cant_Mint_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to mint tokens after the contract is renounced",
+                                                    "example": "null"
+                                                },
+                                                "can_Burn": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of burning tokens.",
+                                                    "example": "true"
+                                                },
+                                                "can_Blacklist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of blacklisting wallets.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Blacklist_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to blacklist wallets after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_MultiBlacklist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of multi-blacklisting wallets.",
+                                                    "example": "false"
+                                                },
+                                                "can_Whitelist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of whitelisting wallets.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Whitelist_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to whitelist wallets after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Fees": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating taxes/fees.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Fees_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update taxes/fees after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Max_Wallet": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating the max wallet.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Max_Wallet_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update the max wallet after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Max_Tx": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating the max transaction.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Max_Tx_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update the max transaction after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Pause_Trading": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability to pause trading.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Pause_Trading_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to pause trading after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "has_Trading_Cooldown": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a trading cooldown.",
+                                                    "example": "false"
+                                                },
+                                                "can_Update_Wallets": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the owner can change the wallet receiving taxes/fees.",
+                                                    "example": "true"
+                                                },
+                                                "has_Suspicious_Functions": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has suspicious functions.  If true, see suspicious_Functions for a list of the functions and their code.",
+                                                    "example": "true"
+                                                },
+                                                "has_External_Functions": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has external functions.  If true, see external_Functions for a list of the functions and their code.",
+                                                    "example": "false"
+                                                },
+                                                "has_Fee_Warning": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a fee warning.",
+                                                    "example": "true"
+                                                },
+                                                "has_ModifiedTransfer_Warning": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a modified transfer method.",
+                                                    "example": "false"
+                                                },
+                                                "modified_Transfer_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of modified transfer methods found in the contract."
+                                                },
+                                                "suspicious_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Suspicious Functions refers to actions within the contract that may not normally be found in a contract. This does not constitute any action to be good or bad, but is advised to review.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "external_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "External Functions are actions that can be ran EVEN when the contract has been renounced.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "audit_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Audit Functions are functions related to the modification of taxes.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "has_Scams": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a matching signature with a known scam contract."
+                                                },
+                                                "matched_Scams": {
+                                                    "type": "string",
+                                                    "description": "List of matching scams.  The data is returned in an array of strings which contains the scam contract's information and defaults to null if no functions were found."
+                                                },
+                                                "scam_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Scam Functions are known scams that is tracked by Quick Intel. This will return the matched scam, along with the scam data, when there is a match.  The data is returned in an array and defaults to null if no matching scams were found."
+                                                },
+                                                "contract_Links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "List of links (typically social media) that are found within the contract."
+                                                },
+                                                "functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Functions is the list of WRITE functions that are available.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                },
+                                                "onlyOwner_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Only Owner Functions is the list of functions that are controlled via the onlyOwner modifier.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                    }
+                                                },
+                                                "multiBlacklistFunctions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Multi-Blacklist Functions are potential actions that can be used to multi-blacklist wallets.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                },
+                                                "has_General_Vulnerabilities": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has general vulnerabilities.  This is a sort of catch-all for edge cases where we see this rarely.",
+                                                    "example": "false"
+                                                },
+                                                "general_Vulnerabilities": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of general vulnerabilities found in the contract."
+                                                },
+                                                "can_Potentially_Steal_Funds": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a suspicious code that could allow the creator to steal tokens.",
+                                                    "example": "false"
+                                                },
+                                                "can_Potentially_Steal_Funds_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of suspicious code that could lead to stolen tokens found in the contract."
+                                                }
+                                            },
+                                            "description": "Returns various Quick Intel audit information for the contract."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "tokenDetails": {
+                                                "tokenName": "Sample Token",
+                                                "tokenSymbol": "SMPLTKN",
+                                                "tokenDecimals": 18,
+                                                "tokenOwner": "0x0000000000000000000000000000000000000000",
+                                                "tokenSupply": 1000000000,
+                                                "tokenCreatedDate": "1676135091000",
+                                                "quickiTokenHash": {
+                                                    "exact_qHash": "q-6b547b152b44",
+                                                    "similar_qHash": "q-8870c53c2053"
+                                                }
+                                            },
+                                            "isScam": "true",
+                                            "contractVerified": "true",
+                                            "quickiAudit": {
+                                                "contract_Creator": "0xb869ce9b5893b1727f0fd9e99e110c4917681903",
+                                                "contract_Owner": "0x0000000000000000000000000000000000000000",
+                                                "contract_Name": "Sample Token",
+                                                "contract_Chain": "eth",
+                                                "contract_Address": "0xbe042e9d09cb588331ff911c2b46fd833a3e5bd7",
+                                                "contract_Renounced": "true",
+                                                "hidden_Owner": "false",
+                                                "hidden_Owner_Modifiers": [
+                                                    "string"
+                                                ],
+                                                "is_Proxy": "false",
+                                                "proxy_Implementation": "null",
+                                                "has_External_Contract_Risk": "false",
+                                                "external_Contracts": [
+                                                    "string"
+                                                ],
+                                                "can_Mint": "false",
+                                                "cant_Mint_Renounced": "null",
+                                                "can_Burn": "true",
+                                                "can_Blacklist": "true",
+                                                "cant_Blacklist_Renounced": "true",
+                                                "can_MultiBlacklist": "false",
+                                                "can_Whitelist": "true",
+                                                "cant_Whitelist_Renounced": "true",
+                                                "can_Update_Fees": "true",
+                                                "cant_Update_Fees_Renounced": "true",
+                                                "can_Update_Max_Wallet": "true",
+                                                "cant_Update_Max_Wallet_Renounced": "true",
+                                                "can_Update_Max_Tx": "true",
+                                                "cant_Update_Max_Tx_Renounced": "true",
+                                                "can_Pause_Trading": "true",
+                                                "cant_Pause_Trading_Renounced": "true",
+                                                "has_Trading_Cooldown": "false",
+                                                "can_Update_Wallets": "true",
+                                                "has_Suspicious_Functions": "true",
+                                                "has_External_Functions": "false",
+                                                "has_Fee_Warning": "true",
+                                                "has_ModifiedTransfer_Warning": "false",
+                                                "modified_Transfer_Functions": [
+                                                    "string"
+                                                ],
+                                                "suspicious_Functions": [
+                                                    "string"
+                                                ],
+                                                "external_Functions": [
+                                                    "string"
+                                                ],
+                                                "audit_Functions": [
+                                                    "string"
+                                                ],
+                                                "has_Scams": false,
+                                                "matched_Scams": "string",
+                                                "scam_Functions": [
+                                                    "string"
+                                                ],
+                                                "contract_Links": [
+                                                    "string"
+                                                ],
+                                                "functions": [
+                                                    "string"
+                                                ],
+                                                "onlyOwner_Functions": [
+                                                    "string"
+                                                ],
+                                                "multiBlacklistFunctions": [
+                                                    "string"
+                                                ],
+                                                "has_General_Vulnerabilities": "false",
+                                                "general_Vulnerabilities": [
+                                                    "string"
+                                                ],
+                                                "can_Potentially_Steal_Funds": "true",
+                                                "can_Potentially_Steal_Funds_Functions": [
+                                                    "string"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed parameters or other bad request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message (typically an invalid chain or contract)",
+                                            "example": "ETHER chain is not supported"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid endpoint requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid endpoint)",
+                                            "example": "Endpoint not available"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "Endpoint not available"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid API Key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid API key)",
+                                            "example": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message for an internal error",
+                                            "example": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getquickiauditfull": {
+            "post": {
+                "summary": "Get Full Audit",
+                "description": "Returns the full audit plus honeypot/taxes information in a single request.  Please note that as this endpoint returns the honeypot check, you may see a slightly longer reponse time.  If you just wish to use the audit, please use the /getquickiaudit endpoint instead.",
+                "operationId": "Get-Full-Audit",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "chain",
+                                    "tokenAddress"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "chain": {
+                                        "type": "string",
+                                        "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                                        "example": "arbitrum"
+                                    },
+                                    "tokenAddress": {
+                                        "type": "string",
+                                        "description": "The contract address to be audited.",
+                                        "example": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "chain": "arbitrum",
+                                "tokenAddress": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request and response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tokenDetails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "tokenName": {
+                                                    "type": "string",
+                                                    "description": "The name of the contract",
+                                                    "example": "Sample Token"
+                                                },
+                                                "tokenSymbol": {
+                                                    "type": "string",
+                                                    "description": "The symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "tokenDecimals": {
+                                                    "type": "integer",
+                                                    "description": "The number of decimal places the contract uses.",
+                                                    "example": 18
+                                                },
+                                                "tokenOwner": {
+                                                    "type": "string",
+                                                    "description": "The current token owner's address.",
+                                                    "example": "0x0000000000000000000000000000000000000000"
+                                                },
+                                                "tokenSupply": {
+                                                    "type": "integer",
+                                                    "description": "The total token supply.",
+                                                    "example": 1000000000
+                                                },
+                                                "tokenCreatedDate": {
+                                                    "type": "integer",
+                                                    "description": "The timestamp of when the token was created.",
+                                                    "example": "1676135091000"
+                                                },
+                                                "quickiTokenHash": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "exact_qHash": {
+                                                            "type": "string",
+                                                            "description": "The hash for exact contracts.",
+                                                            "example": "q-6b547b152b44"
+                                                        },
+                                                        "similar_qHash": {
+                                                            "type": "string",
+                                                            "description": "The hash for similar contracts.",
+                                                            "example": "q-8870c53c2053"
+                                                        }
+                                                    },
+                                                    "description": "An object containing Quick Intel's hashes."
+                                                }
+                                            },
+                                            "description": "Returns basic token information."
+                                        },
+                                        "tokenDynamicDetails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "lastUpdatedTimestamp": {
+                                                    "type": "integer",
+                                                    "description": "Timestamp of the last time the honeypot / taxes were checked.",
+                                                    "example": "1695266469435"
+                                                },
+                                                "is_Honeypot": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is a honeypot.",
+                                                    "example": "false"
+                                                },
+                                                "buy_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current buy tax.",
+                                                    "example": "1"
+                                                },
+                                                "sell_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current sell tax.",
+                                                    "example": "1"
+                                                },
+                                                "transfer_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current transfer tax.",
+                                                    "example": "0"
+                                                },
+                                                "post_Cooldown_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the sell tax in the case the contract has a trading cooldown.",
+                                                    "example": "1"
+                                                },
+                                                "max_Transaction": {
+                                                    "type": "integer",
+                                                    "description": "The maximum tokens allowed in a single transaction.",
+                                                    "example": "10000000"
+                                                },
+                                                "max_Transaction_Percent": {
+                                                    "type": "string",
+                                                    "description": "The maximum percentage of tokens allowed in a single transaction.",
+                                                    "example": "null"
+                                                },
+                                                "max_Wallet": {
+                                                    "type": "integer",
+                                                    "description": "he maximum tokens a single wallet is allowed to contain.",
+                                                    "example": "20000000"
+                                                },
+                                                "max_Wallet_Percent": {
+                                                    "type": "string",
+                                                    "description": "The maximum percentage of tokens a single wallet is allowed to contain.",
+                                                    "example": "2"
+                                                },
+                                                "token_Supply_Burned": {
+                                                    "type": "number",
+                                                    "description": "The amount of the supply that has been burned.",
+                                                    "example": 25234632.1256
+                                                },
+                                                "lp_Pair": {
+                                                    "type": "string",
+                                                    "description": "The liquidity pairing address for the token.  Note that depending on which endpoint you use, you will receive either the first LP found or a list of all LPs.",
+                                                    "example": "0x8616B44b734817a2C954016A57CF2c4D72D6f839"
+                                                },
+                                                "lp_Supply": {
+                                                    "type": "number",
+                                                    "description": "The liquidity pairing supply for the token.",
+                                                    "example": "34782.40093"
+                                                },
+                                                "lp_Burned_Percent": {
+                                                    "type": "string",
+                                                    "description": "The percent of the LP that is burned.",
+                                                    "example": "99.94"
+                                                },
+                                                "lp_Locks": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "pinksale": {
+                                                            "type": "object",
+                                                            "description": "Dex ID for one of the dexes on this chain.  Note this will be different based on the chain.",
+                                                            "example": "null"
+                                                        },
+                                                        "onlymoons": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "lockDate": {
+                                                                    "type": "integer",
+                                                                    "description": "The timestamp of when the liquidity was locked.",
+                                                                    "example": "1676137399000"
+                                                                },
+                                                                "amount": {
+                                                                    "type": "number",
+                                                                    "description": "The amount of liquidity that was locked.",
+                                                                    "example": 1316304.79392186
+                                                                },
+                                                                "unlockDate": {
+                                                                    "type": "integer",
+                                                                    "description": "The timestamp of when the liquidity will become unlocked.",
+                                                                    "example": "1707634800000"
+                                                                },
+                                                                "lockID": {
+                                                                    "type": "string",
+                                                                    "description": "The lock ID.",
+                                                                    "example": "200"
+                                                                },
+                                                                "owner": {
+                                                                    "type": "string",
+                                                                    "description": "The owner's address.",
+                                                                    "example": "0x54aAa2e0C296008E992897979078f66Ddf876b86"
+                                                                },
+                                                                "percentageLocked": {
+                                                                    "type": "string",
+                                                                    "description": "The percentage of liquidity locked.",
+                                                                    "example": "95"
+                                                                }
+                                                            },
+                                                            "description": "Array of LP info for the lock that was found on this Dex ID. Note this will be different based on the chain."
+                                                        },
+                                                        "dxsale": {
+                                                            "type": "object",
+                                                            "description": "Dex ID for one of the dexes on this chain. Note this will be different based on the chain.",
+                                                            "example": "null"
+                                                        }
+                                                    },
+                                                    "description": "Returns an array of all dexes on this chain along with any LP locks that were found, including the locker, amount, dates and percentage.  For a list of supported dexes and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains"
+                                                },
+                                                "price_Impact": {
+                                                    "type": "string",
+                                                    "description": "Returns the price impact of the transaction.",
+                                                    "example": "0.1"
+                                                },
+                                                "problem": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if there was a problem with the test buy/sell.",
+                                                    "example": "true"
+                                                },
+                                                "extra": {
+                                                    "type": "string",
+                                                    "description": "Lists the description of the issue if problem = true.",
+                                                    "example": "Liquidity low or problem with the purchase!"
+                                                }
+                                            },
+                                            "description": "Returns various honeypot and tax details"
+                                        },
+                                        "isScam": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract is was manually confirmed as scam by thte Quick Intel team.",
+                                            "example": "true"
+                                        },
+                                        "isAirdropPhishingScam": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the token is an airdropped or phishing token.",
+                                            "example": "true"
+                                        },
+                                        "contractVerified": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract is verified.",
+                                            "example": "true"
+                                        },
+                                        "quickiAudit": {
+                                            "type": "object",
+                                            "properties": {
+                                                "contract_Creator": {
+                                                    "type": "string",
+                                                    "description": "The address of the wallet which created the contract.",
+                                                    "example": "0xb869ce9b5893b1727f0fd9e99e110c4917681903"
+                                                },
+                                                "contract_Owner": {
+                                                    "type": "string",
+                                                    "description": "The wallet address of the contract owner.",
+                                                    "example": "0x0000000000000000000000000000000000000000"
+                                                },
+                                                "contract_Name": {
+                                                    "type": "string",
+                                                    "description": "The name of the contract.",
+                                                    "example": "Sample Token"
+                                                },
+                                                "contract_Chain": {
+                                                    "type": "string",
+                                                    "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                                                    "example": "eth"
+                                                },
+                                                "contract_Address": {
+                                                    "type": "string",
+                                                    "description": "The address of the contract being audited.",
+                                                    "example": "0xbe042e9d09cb588331ff911c2b46fd833a3e5bd7"
+                                                },
+                                                "contract_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is renounced.",
+                                                    "example": "true"
+                                                },
+                                                "is_Launchpad_Contract": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract was launched from a launchpad.",
+                                                    "example": "false"
+                                                },
+                                                "launchpad_Details": {
+                                                    "type": "string",
+                                                    "description": "The information of the launchpad.",
+                                                    "example": "GemPad"
+                                                },
+                                                "hidden_Owner": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a hidden owner.",
+                                                    "example": "false"
+                                                },
+                                                "hidden_Owner_Modifiers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": ""
+                                                    },
+                                                    "description": "An array of modifiers that can run by a hidden owner."
+                                                },
+                                                "is_Proxy": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract uses a proxy contract.",
+                                                    "example": "false"
+                                                },
+                                                "proxy_Implementation": {
+                                                    "type": "string",
+                                                    "description": "The address of the proxy contract if one exists.",
+                                                    "example": "null"
+                                                },
+                                                "has_External_Contract_Risk": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has embedded external contracts that can control this contract.",
+                                                    "example": "false"
+                                                },
+                                                "external_Contracts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "External contract address."
+                                                    },
+                                                    "description": "List of external contracts this contract has enabled."
+                                                },
+                                                "has_Obfuscated_Address_Risk": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has one or more obfuscated addresses embedded in the contract.  These are hidden address that can be either a contract or address masked as a numberic value.",
+                                                    "example": "false"
+                                                },
+                                                "obfuscated_Address_List": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Contract address."
+                                                    },
+                                                    "description": "List of obfuscated addresses in the contract."
+                                                },
+                                                "has_Pregenerated_Contract_Address_Risk": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has one or more potential pregenerated addresses embedded in the contract that later turn into contracts.  These are hidden address that can be either a contract or address masked as a numberic value.",
+                                                    "example": "false"
+                                                },
+                                                "pregenerated_Contract_Address_List": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Address."
+                                                    },
+                                                    "description": "List of potential pregenerated addresses in the contract."
+                                                },
+                                                "can_Mint": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of minting tokens.",
+                                                    "example": "false"
+                                                },
+                                                "cant_Mint_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to mint tokens after the contract is renounced",
+                                                    "example": "null"
+                                                },
+                                                "can_Burn": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of burning tokens.",
+                                                    "example": "true"
+                                                },
+                                                "can_Blacklist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of blacklisting wallets.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Blacklist_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to blacklist wallets after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_MultiBlacklist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of multi-blacklisting wallets.",
+                                                    "example": "false"
+                                                },
+                                                "can_Whitelist": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of whitelisting wallets.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Whitelist_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to whitelist wallets after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Fees": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating taxes/fees.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Fees_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update taxes/fees after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Max_Wallet": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating the max wallet.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Max_Wallet_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update the max wallet after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Update_Max_Tx": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability of updating the max transaction.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Update_Max_Tx_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to update the max transaction after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "can_Pause_Trading": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has the capability to pause trading.",
+                                                    "example": "true"
+                                                },
+                                                "cant_Pause_Trading_Renounced": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is unable to pause trading after being renounced.",
+                                                    "example": "true"
+                                                },
+                                                "has_Trading_Cooldown": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a trading cooldown.",
+                                                    "example": "false"
+                                                },
+                                                "can_Update_Wallets": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the owner can change the wallet receiving taxes/fees.",
+                                                    "example": "true"
+                                                },
+                                                "has_Suspicious_Functions": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has suspicious functions.  If true, see suspicious_Functions for a list of the functions and their code.",
+                                                    "example": "true"
+                                                },
+                                                "has_External_Functions": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has external functions.  If true, see external_Functions for a list of the functions and their code.",
+                                                    "example": "false"
+                                                },
+                                                "has_Fee_Warning": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a fee warning.",
+                                                    "example": "true"
+                                                },
+                                                "has_ModifiedTransfer_Warning": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a modified transfer method.",
+                                                    "example": "false"
+                                                },
+                                                "modified_Transfer_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of modified transfer methods found in the contract."
+                                                },
+                                                "suspicious_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Suspicious Functions refers to actions within the contract that may not normally be found in a contract. This does not constitute any action to be good or bad, but is advised to review.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "external_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "External Functions are actions that can be ran EVEN when the contract has been renounced.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "audit_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Audit Functions are functions related to the modification of taxes.  The data is returned in an array of strings which contains the functions code and defaults to null if no functions were found."
+                                                },
+                                                "has_Scams": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a matching signature with a known scam contract."
+                                                },
+                                                "matched_Scams": {
+                                                    "type": "string",
+                                                    "description": "List of matching scams.  The data is returned in an array of strings which contains the scam contract's information and defaults to null if no functions were found."
+                                                },
+                                                "scam_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Scam Functions are known scams that is tracked by Quick Intel. This will return the matched scam, along with the scam data, when there is a match.  The data is returned in an array and defaults to null if no matching scams were found."
+                                                },
+                                                "has_Known_Scam_Wallet_Funding": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the creator of the token had funding from a known scam wallet."
+                                                },
+                                                "known_Scam_Wallet_Funding": {
+                                                    "type": "string",
+                                                    "description": "List of matching known scam wallets.  The data is returned in an array of which contains the scam wallets's information and defaults to null if none were found."
+                                                },
+                                                "contract_Links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "List of links (typically social media) that are found within the contract."
+                                                },
+                                                "functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Functions is the list of WRITE functions that are available.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                },
+                                                "onlyOwner_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Only Owner Functions is the list of functions that are controlled via the onlyOwner modifier.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                    }
+                                                },
+                                                "singleBlacklistFunctions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "description": "Potential single blacklist functions that were identified for review.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                    }
+                                                },
+                                                "multiBlacklistFunctions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Multi-Blacklist Functions are potential actions that can be used to multi-blacklist wallets.  The data is returned in an array of strings with the function names and defaults to null if no functions were found."
+                                                },
+                                                "has_General_Vulnerabilities": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has general vulnerabilities.  This is a sort of catch-all for edge cases where we see this rarely.",
+                                                    "example": "false"
+                                                },
+                                                "general_Vulnerabilities": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of general vulnerabilities found in the contract."
+                                                },
+                                                "can_Potentially_Steal_Funds": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a suspicious code that could allow the creator to steal tokens.",
+                                                    "example": "false"
+                                                },
+                                                "can_Potentially_Steal_Funds_Functions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Array of suspicious code that could lead to stolen tokens found in the contract."
+                                                }
+                                            },
+                                            "description": "Returns various Quick Intel audit information for the contract."
+                                        },
+                                        "projectVerified": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the project has been verified by Quick Intel.",
+                                            "example": "true"
+                                        },
+                                        "projectVerifiDescription": {
+                                            "type": "string",
+                                            "description": "Description of the VeriFi'd project.",
+                                            "example": "This project has been VeriFi'd by Quick Intel."
+                                        },
+                                        "kycVerifications": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "description": ""
+                                            },
+                                            "description": "An array of verified KYC data of the project."
+                                        },
+                                        "externalAudits": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "description": ""
+                                            },
+                                            "description": "An array of verified external audit data of the project."
+                                        },
+                                        "extraLinks": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "description": ""
+                                            },
+                                            "description": "An array of verified links related to the project."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "tokenDetails": {
+                                                "tokenName": "Sample Token",
+                                                "tokenSymbol": "SMPLTKN",
+                                                "tokenDecimals": 18,
+                                                "tokenOwner": "0x0000000000000000000000000000000000000000",
+                                                "tokenSupply": 1000000000,
+                                                "tokenCreatedDate": "1676135091000",
+                                                "quickiTokenHash": {
+                                                    "exact_qHash": "q-6b547b152b44",
+                                                    "similar_qHash": "q-8870c53c2053"
+                                                }
+                                            },
+                                            "tokenDynamicDetails": {
+                                                "lastUpdatedTimestamp": "1695266469435",
+                                                "is_Honeypot": "false",
+                                                "buy_Tax": "1",
+                                                "sell_Tax": "1",
+                                                "transfer_Tax": "0",
+                                                "post_Cooldown_Tax": "1",
+                                                "max_Transaction": "10000000",
+                                                "max_Transaction_Percent": "null",
+                                                "max_Wallet": "20000000",
+                                                "max_Wallet_Percent": "2",
+                                                "token_Supply_Burned": 25234632.1256,
+                                                "lp_Pair": "0x8616B44b734817a2C954016A57CF2c4D72D6f839",
+                                                "lp_Supply": 34782.40093,
+                                                "lp_Burned_Percent": "99.94",
+                                                "lp_Locks": {
+                                                    "pinksale": "null",
+                                                    "onlymoons": {
+                                                        "lockDate": "1676137399000",
+                                                        "amount": 1316304.79392186,
+                                                        "unlockDate": "1707634800000",
+                                                        "lockID": "200",
+                                                        "owner": "0x54aAa2e0C296008E992897979078f66Ddf876b86",
+                                                        "percentageLocked": "95"
+                                                    },
+                                                    "dxsale": "null"
+                                                },
+                                                "price_Impact": "0.1",
+                                                "problem": "true",
+                                                "extra": "Liquidity low or problem with the purchase!"
+                                            },
+                                            "isScam": "true",
+                                            "isAirdropPhishingScam": "true",
+                                            "contractVerified": "true",
+                                            "quickiAudit": {
+                                                "contract_Creator": "0xb869ce9b5893b1727f0fd9e99e110c4917681903",
+                                                "contract_Owner": "0x0000000000000000000000000000000000000000",
+                                                "contract_Name": "Sample Token",
+                                                "contract_Chain": "eth",
+                                                "contract_Address": "0xbe042e9d09cb588331ff911c2b46fd833a3e5bd7",
+                                                "contract_Renounced": "true",
+                                                "is_Launchpad_Contract": "false",
+                                                "launchpad_Details": "GemPad",
+                                                "hidden_Owner": "false",
+                                                "hidden_Owner_Modifiers": [
+                                                    "string"
+                                                ],
+                                                "is_Proxy": "false",
+                                                "proxy_Implementation": "null",
+                                                "has_External_Contract_Risk": "false",
+                                                "external_Contracts": [
+                                                    "string"
+                                                ],
+                                                "has_Obfuscated_Address_Risk": "false",
+                                                "obfuscated_Address_List": [
+                                                    "string"
+                                                ],
+                                                "has_Pregenerated_Contract_Address_Risk": "false",
+                                                "pregenerated_Contract_Address_List": [
+                                                    "string"
+                                                ],
+                                                "can_Mint": "false",
+                                                "cant_Mint_Renounced": "null",
+                                                "can_Burn": "true",
+                                                "can_Blacklist": "true",
+                                                "cant_Blacklist_Renounced": "true",
+                                                "can_MultiBlacklist": "false",
+                                                "can_Whitelist": "true",
+                                                "cant_Whitelist_Renounced": "true",
+                                                "can_Update_Fees": "true",
+                                                "cant_Update_Fees_Renounced": "true",
+                                                "can_Update_Max_Wallet": "true",
+                                                "cant_Update_Max_Wallet_Renounced": "true",
+                                                "can_Update_Max_Tx": "true",
+                                                "cant_Update_Max_Tx_Renounced": "true",
+                                                "can_Pause_Trading": "true",
+                                                "cant_Pause_Trading_Renounced": "true",
+                                                "has_Trading_Cooldown": "false",
+                                                "can_Update_Wallets": "true",
+                                                "has_Suspicious_Functions": "true",
+                                                "has_External_Functions": "false",
+                                                "has_Fee_Warning": "true",
+                                                "has_ModifiedTransfer_Warning": "false",
+                                                "modified_Transfer_Functions": [
+                                                    "string"
+                                                ],
+                                                "suspicious_Functions": [
+                                                    "string"
+                                                ],
+                                                "external_Functions": [
+                                                    "string"
+                                                ],
+                                                "audit_Functions": [
+                                                    "string"
+                                                ],
+                                                "has_Scams": false,
+                                                "matched_Scams": "string",
+                                                "scam_Functions": [
+                                                    "string"
+                                                ],
+                                                "has_Known_Scam_Wallet_Funding": false,
+                                                "known_Scam_Wallet_Funding": [
+                                                    "string"
+                                                ],
+                                                "contract_Links": [
+                                                    "string"
+                                                ],
+                                                "functions": [
+                                                    "string"
+                                                ],
+                                                "onlyOwner_Functions": [
+                                                    "string"
+                                                ],
+                                                "singleBlacklistFunctions": [
+                                                    "string"
+                                                ],
+                                                "multiBlacklistFunctions": [
+                                                    "string"
+                                                ],
+                                                "has_General_Vulnerabilities": "false",
+                                                "general_Vulnerabilities": [
+                                                    "string"
+                                                ],
+                                                "can_Potentially_Steal_Funds": "true",
+                                                "can_Potentially_Steal_Funds_Functions": [
+                                                    "string"
+                                                ]
+                                            },
+                                            "projectVerified": "true",
+                                            "projectVerifiDescription": "Description of project.",
+                                            "kycVerifications": [
+                                                {
+                                                    "kyc_Provider": "Assure DeFi",
+                                                    "link": "https://assuredefi.com/projects/quick-intel",
+                                                    "date_Verified": 1710169854000
+                                                }
+                                            ],
+                                            "externalAudits": [
+                                                {
+                                                    "audit_Provider": "SolidProof",
+                                                    "audit_Link": "https://github.com/solidproof/projects/blob/main/2023/QuickIntel/SmartContract_Audit_Solidproof_QuickIntel.pdf",
+                                                    "date_Verified": 1710169854000
+                                                }
+                                            ],
+                                            "extraLinks": [
+                                                {
+                                                    "extra_Name": "dApp",
+                                                    "extra_Link": "https://app.quickintel.io",
+                                                    "date_Verified": 1711394611035
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed parameters or other bad request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message (typically an invalid chain or contract)",
+                                            "example": "ETHER chain is not supported"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid endpoint requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid endpoint)",
+                                            "example": "Endpoint not available"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "Endpoint not available"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid API Key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid API key)",
+                                            "example": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message for an internal error",
+                                            "example": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/honeypot/{dex}/{token}/{lptoken}": {
+            "get": {
+                "summary": "Get Honeypot by Specific DEX",
+                "description": "Returns the honeypot/taxes information for a given dex + contract + LP token.",
+                "operationId": "Get-Honeypot-by-Specific-DEX",
+                "parameters": [
+                    {
+                        "name": "dex",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The ID of the dex where the liquidity resides.  For a list of supported dexes and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                            "example": "sushiswaparb"
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The contract address of the token to be audited.",
+                            "example": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                        }
+                    },
+                    {
+                        "name": "lptoken",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The liquidity pairing address for the token (or use default).",
+                            "example": "default"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request and response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "isHoneypot": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract is a honeypot.",
+                                            "example": "false"
+                                        },
+                                        "buyFee": {
+                                            "type": "string",
+                                            "description": "Returns the current buy tax.",
+                                            "example": "1"
+                                        },
+                                        "sellFee": {
+                                            "type": "string",
+                                            "description": "Returns the current sell tax.",
+                                            "example": "1"
+                                        },
+                                        "transferFee": {
+                                            "type": "string",
+                                            "description": "Returns the current transfer tax.",
+                                            "example": "0"
+                                        },
+                                        "tradingCooldown": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the contract has a trading cooldown between buy and sell transactions for wallets.",
+                                            "example": "true"
+                                        },
+                                        "postCooldownFee": {
+                                            "type": "string",
+                                            "description": "Returns the sell tax in the case the contract has a trading cooldown.",
+                                            "example": "1"
+                                        },
+                                        "buyGas": {
+                                            "type": "string",
+                                            "description": "Returns the gas used for the buy.",
+                                            "example": "1"
+                                        },
+                                        "sellGas": {
+                                            "type": "string",
+                                            "description": "Returns the gas used for the sell.",
+                                            "example": "1"
+                                        },
+                                        "maxTokenTransaction": {
+                                            "type": "number",
+                                            "description": "The maximum tokens allowed in a single transaction.",
+                                            "example": 10000000
+                                        },
+                                        "maxTokenTransactionPercent": {
+                                            "type": "string",
+                                            "description": "The maximum percentage of tokens allowed in a single transaction.",
+                                            "example": "null"
+                                        },
+                                        "maxTokenTransactionMain": {
+                                            "type": "number",
+                                            "description": "The maximum tokens a single wallet is allowed to move in a single transaction.",
+                                            "example": 20000000
+                                        },
+                                        "maxWallet": {
+                                            "type": "number",
+                                            "description": "The maximum tokens a single wallet is allowed to contain.",
+                                            "example": 20000000
+                                        },
+                                        "maxWalletPercent": {
+                                            "type": "string",
+                                            "description": "The maximum percentage of tokens a single wallet is allowed to contain.",
+                                            "example": "2"
+                                        },
+                                        "tokenName": {
+                                            "type": "string",
+                                            "description": "The name of the contract",
+                                            "example": "Sample Token"
+                                        },
+                                        "tokenSymbol": {
+                                            "type": "string",
+                                            "description": "The symbol of the contract/token.",
+                                            "example": "SMPLTKN"
+                                        },
+                                        "tokenDecimals": {
+                                            "type": "string",
+                                            "description": "The number of decimal places the contract uses.",
+                                            "example": "18"
+                                        },
+                                        "tokenOwner": {
+                                            "type": "string",
+                                            "description": "The current token owner's address.",
+                                            "example": "0x0000000000000000000000000000000000000000"
+                                        },
+                                        "tokenSupply": {
+                                            "type": "number",
+                                            "description": "The total token supply.",
+                                            "example": 1000000000
+                                        },
+                                        "tokenBurned": {
+                                            "type": "number",
+                                            "description": "The amount of supply that has been burned.",
+                                            "example": 100000
+                                        },
+                                        "mainTokenSymbol": {
+                                            "type": "string",
+                                            "description": "The token symbol of the LP",
+                                            "example": "SLP"
+                                        },
+                                        "lpPair": {
+                                            "type": "string",
+                                            "description": "The liquidity pairing address for the token.  Note that depending on which endpoint you use, you will receive either the first LP found or a list of all LPs.",
+                                            "example": "0x8616B44b734817a2C954016A57CF2c4D72D6f839"
+                                        },
+                                        "lpSupply": {
+                                            "type": "number",
+                                            "description": "The liquidity pairing supply for the token.",
+                                            "example": 34782.40093
+                                        },
+                                        "lpBurnedPercent": {
+                                            "type": "string",
+                                            "description": "The percent of the LP that is burned.",
+                                            "example": "99.94"
+                                        },
+                                        "lpLocks": {
+                                            "type": "object",
+                                            "properties": {
+                                                "pinksale": {
+                                                    "type": "object",
+                                                    "description": "Dex ID for one of the dexes on this chain. Note this will be different based on the chain.",
+                                                    "example": "null"
+                                                },
+                                                "onlymoons": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "lockDate": {
+                                                            "type": "integer",
+                                                            "description": "The timestamp of when the liquidity was locked.",
+                                                            "example": "1676137399000"
+                                                        },
+                                                        "amount": {
+                                                            "type": "number",
+                                                            "description": "The amount of liquidity that was locked.",
+                                                            "example": 1316304.79392186
+                                                        },
+                                                        "unlockDate": {
+                                                            "type": "integer",
+                                                            "description": "The timestamp of when the liquidity will become unlocked.",
+                                                            "example": "1707634800000"
+                                                        },
+                                                        "lockID": {
+                                                            "type": "string",
+                                                            "description": "The lock ID.",
+                                                            "example": "200"
+                                                        },
+                                                        "owner": {
+                                                            "type": "string",
+                                                            "description": "The owner's address.",
+                                                            "example": "0x54aAa2e0C296008E992897979078f66Ddf876b86"
+                                                        },
+                                                        "percentageLocked": {
+                                                            "type": "string",
+                                                            "description": "The percentage of liquidity locked.",
+                                                            "example": "95"
+                                                        }
+                                                    },
+                                                    "description": "Array of LP info for the lock that was found on this Dex ID. Note this will be different based on the chain."
+                                                },
+                                                "dxsale": {
+                                                    "type": "object",
+                                                    "description": "Dex ID for one of the dexes on this chain. Note this will be different based on the chain.",
+                                                    "example": "null"
+                                                }
+                                            },
+                                            "description": "Returns an array of all dexes on this chain along with any LP locks that were found, including the locker, amount, dates and percentage.  For a list of supported dexes and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains"
+                                        },
+                                        "priceImpact": {
+                                            "type": "string",
+                                            "description": "Returns the price impact of the transaction.",
+                                            "example": "0.1"
+                                        },
+                                        "problem": {
+                                            "type": "boolean",
+                                            "description": "Indicates if there was a problem with the test buy/sell.",
+                                            "example": "true"
+                                        },
+                                        "extra": {
+                                            "type": "string",
+                                            "description": "Lists the description of the issue if problem = true.",
+                                            "example": "Liquidity low or problem with the purchase!"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "isHoneypot": "false",
+                                            "buyFee": "1",
+                                            "sellFee": "1",
+                                            "transferFee": "0",
+                                            "tradingCooldown": "true",
+                                            "postCooldownFee": "1",
+                                            "buyGas": "1",
+                                            "sellGas": "1",
+                                            "maxTokenTransaction": 10000000,
+                                            "maxTokenTransactionPercent": "null",
+                                            "maxTokenTransactionMain": 20000000,
+                                            "maxWallet": 20000000,
+                                            "maxWalletPercent": "2",
+                                            "tokenName": "Sample Token",
+                                            "tokenSymbol": "SMPLTKN",
+                                            "tokenDecimals": "18",
+                                            "tokenOwner": "0x0000000000000000000000000000000000000000",
+                                            "tokenSupply": 1000000000,
+                                            "tokenBurned": 100000,
+                                            "mainTokenSymbol": "SLP",
+                                            "lpPair": "0x8616B44b734817a2C954016A57CF2c4D72D6f839",
+                                            "lpSupply": 34782.40093,
+                                            "lpBurnedPercent": "99.94",
+                                            "lpLocks": {
+                                                "pinksale": "null",
+                                                "onlymoons": {
+                                                    "lockDate": "1676137399000",
+                                                    "amount": 1316304.79392186,
+                                                    "unlockDate": "1707634800000",
+                                                    "lockID": "200",
+                                                    "owner": "0x54aAa2e0C296008E992897979078f66Ddf876b86",
+                                                    "percentageLocked": "95"
+                                                },
+                                                "dxsale": "null"
+                                            },
+                                            "priceImpact": "0.1",
+                                            "problem": "true",
+                                            "extra": "Liquidity low or problem with the purchase!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed parameters or other bad request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message (typically an invalid chain or contract)",
+                                            "example": "ETHER chain is not supported"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid endpoint requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid endpoint)",
+                                            "example": "Endpoint not available"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "Endpoint not available"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid API Key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid API key)",
+                                            "example": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message for an internal error",
+                                            "example": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/honeypot/{chain}/{tokenAddress}": {
+            "get": {
+                "summary": "Get Honeypot by Token",
+                "description": "Returns the honeypot/taxes information for a given token on a specified chain.",
+                "operationId": "Get-Honeypot-by-Token",
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                            "example": "arbitrum"
+                        }
+                    },
+                    {
+                        "name": "tokenAddress",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The contract address to be audited.",
+                            "example": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request and response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tokenDetails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "tokenName": {
+                                                    "type": "string",
+                                                    "description": "The name of the contract",
+                                                    "example": "Sample Token"
+                                                },
+                                                "tokenSymbol": {
+                                                    "type": "string",
+                                                    "description": "The symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "tokenDecimals": {
+                                                    "type": "integer",
+                                                    "description": "The number of decimal places the contract uses.",
+                                                    "example": 18
+                                                },
+                                                "tokenOwner": {
+                                                    "type": "string",
+                                                    "description": "The current token owner's address.",
+                                                    "example": "0x0000000000000000000000000000000000000000"
+                                                },
+                                                "tokenSupply": {
+                                                    "type": "integer",
+                                                    "description": "The total token supply.",
+                                                    "example": 1000000000
+                                                }
+                                            },
+                                            "description": "Returns basic token information."
+                                        },
+                                        "tokenDynamicDetails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "lastUpdatedTimestamp": {
+                                                    "type": "integer",
+                                                    "description": "Timestamp of the last time the honeypot / taxes were checked.",
+                                                    "example": "1695266469435"
+                                                },
+                                                "is_Honeypot": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is a honeypot.",
+                                                    "example": "false"
+                                                },
+                                                "buy_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current buy tax.",
+                                                    "example": "1"
+                                                },
+                                                "sell_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current sell tax.",
+                                                    "example": "1"
+                                                },
+                                                "transfer_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the current transfer tax.",
+                                                    "example": "0"
+                                                },
+                                                "has_Trading_Cooldown": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract has a trading cooldown between buy and sell transactions for wallets.",
+                                                    "example": "true"
+                                                },
+                                                "post_Cooldown_Tax": {
+                                                    "type": "string",
+                                                    "description": "Returns the sell tax in the case the contract has a trading cooldown.",
+                                                    "example": "1"
+                                                },
+                                                "max_Transaction": {
+                                                    "type": "integer",
+                                                    "description": "The maximum tokens allowed in a single transaction.",
+                                                    "example": 10000000
+                                                },
+                                                "max_Transaction_Percent": {
+                                                    "type": "string",
+                                                    "description": "The maximum percentage of tokens allowed in a single transaction.",
+                                                    "example": "null"
+                                                },
+                                                "max_Wallet": {
+                                                    "type": "integer",
+                                                    "description": "he maximum tokens a single wallet is allowed to contain.",
+                                                    "example": 20000000
+                                                },
+                                                "max_Wallet_Percent": {
+                                                    "type": "string",
+                                                    "description": "The maximum percentage of tokens a single wallet is allowed to contain.",
+                                                    "example": "2"
+                                                },
+                                                "token_Supply_Burned": {
+                                                    "type": "number",
+                                                    "description": "The amount of the supply that has been burned.",
+                                                    "example": 25234632.1256
+                                                },
+                                                "lp_Pair": {
+                                                    "type": "string",
+                                                    "description": "The liquidity pairing address for the token.  Note that depending on which endpoint you use, you will receive either the first LP found or a list of all LPs.",
+                                                    "example": "0x8616B44b734817a2C954016A57CF2c4D72D6f839"
+                                                },
+                                                "lp_Supply": {
+                                                    "type": "number",
+                                                    "description": "The liquidity pairing supply for the token.",
+                                                    "example": 34782.40093
+                                                },
+                                                "lp_Burned_Percent": {
+                                                    "type": "string",
+                                                    "description": "The percent of the LP that is burned.",
+                                                    "example": "99.94"
+                                                },
+                                                "lp_Locks": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "pinksale": {
+                                                            "type": "object",
+                                                            "description": "Dex ID for one of the dexes on this chain. Note this will be different based on the chain.",
+                                                            "example": "null"
+                                                        },
+                                                        "onlymoons": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "lockDate": {
+                                                                    "type": "integer",
+                                                                    "description": "The timestamp of when the liquidity was locked.",
+                                                                    "example": "1676137399000"
+                                                                },
+                                                                "amount": {
+                                                                    "type": "number",
+                                                                    "description": "The amount of liquidity that was locked.",
+                                                                    "example": 1316304.79392186
+                                                                },
+                                                                "unlockDate": {
+                                                                    "type": "integer",
+                                                                    "description": "The timestamp of when the liquidity will become unlocked.",
+                                                                    "example": "1707634800000"
+                                                                },
+                                                                "lockID": {
+                                                                    "type": "string",
+                                                                    "description": "The lock ID.",
+                                                                    "example": "200"
+                                                                },
+                                                                "owner": {
+                                                                    "type": "string",
+                                                                    "description": "The owner's address.",
+                                                                    "example": "0x54aAa2e0C296008E992897979078f66Ddf876b86"
+                                                                },
+                                                                "percentageLocked": {
+                                                                    "type": "string",
+                                                                    "description": "The percentage of liquidity locked.",
+                                                                    "example": "95"
+                                                                }
+                                                            },
+                                                            "description": "Array of LP info for the lock that was found on this Dex ID. Note this will be different based on the chain."
+                                                        },
+                                                        "dxsale": {
+                                                            "type": "object",
+                                                            "description": "Dex ID for one of the dexes on this chain. Note this will be different based on the chain.",
+                                                            "example": "null"
+                                                        }
+                                                    },
+                                                    "description": "Returns an array of all dexes on this chain along with any LP locks that were found, including the locker, amount, dates and percentage.  For a list of supported dexes and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains"
+                                                },
+                                                "price_Impact": {
+                                                    "type": "string",
+                                                    "description": "Returns the price impact of the transaction.",
+                                                    "example": "0.1"
+                                                },
+                                                "problem": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if there was a problem with the test buy/sell.",
+                                                    "example": "true"
+                                                },
+                                                "extra": {
+                                                    "type": "string",
+                                                    "description": "Lists the description of the issue if problem = true.",
+                                                    "example": "Liquidity low or problem with the purchase!"
+                                                }
+                                            },
+                                            "description": "Returns various honeypot and tax details"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "tokenDetails": {
+                                                "tokenName": "Sample Token",
+                                                "tokenSymbol": "SMPLTKN",
+                                                "tokenDecimals": "18",
+                                                "tokenOwner": "0x54aaa2e0c296008e992897979078f66ddf876b86",
+                                                "tokenSupply": "1000000000000.0001"
+                                            },
+                                            "tokenDynamicDetails": {
+                                                "lastUpdatedTimestamp": "1695535853281",
+                                                "is_Honeypot": false,
+                                                "buy_Tax": "5.0",
+                                                "sell_Tax": "5.0",
+                                                "transfer_Tax": "0.0",
+                                                "max_Transaction": null,
+                                                "max_Wallet": "30000000000.000004",
+                                                "max_Wallet_Percent": "3.0",
+                                                "token_Supply_Burned": 25234632.1256,
+                                                "lp_Pair": "0x6C01242B5e039Ab0CD20d7E7e249920FE03c3cfB",
+                                                "lp_Supply": 1380249.76881954,
+                                                "lp_Burned_Percent": "0.00",
+                                                "lp_Locks": {
+                                                    "pinksale": null,
+                                                    "onlymoons": {
+                                                        "lockDate": "1676137399000",
+                                                        "amount": 1316304.79392186,
+                                                        "unlockDate": "1707634800000",
+                                                        "lockID": "332",
+                                                        "owner": "0x54aAa2e0C296008E992897979078f66Ddf876b86",
+                                                        "percentageLocked": "95"
+                                                    },
+                                                    "dxsale": null
+                                                },
+                                                "price_Impact": "0.1",
+                                                "problem": false,
+                                                "extra": null
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed parameters or other bad request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message (typically an invalid chain or contract)",
+                                            "example": "ETHER chain is not supported"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid endpoint requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid endpoint)",
+                                            "example": "Endpoint not available"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "Endpoint not available"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid API Key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid API key)",
+                                            "example": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message for an internal error",
+                                            "example": "Error retrieving audit for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "ETHER chain is not supported"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getsimilarexact/{chain}/{tokenAddress}": {
+            "get": {
+                "summary": "Get Similar & Exact Tokens",
+                "description": "Returns the similar/exact contracts for a given token across all the chains supported by Quick Intel.",
+                "operationId": "Get-Similar-Exact-Tokens",
+                "parameters": [
+                    {
+                        "name": "chain",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The ID of the chain where the contract resides.  For a list of supported chains and their IDs, please visit https://docs.quickintel.io/developers/api-supported-chains",
+                            "example": "arbitrum"
+                        }
+                    },
+                    {
+                        "name": "tokenAddress",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The contract address to be searched against.",
+                            "example": "0x6d038130b9b379a373b1d33a29d5904ed1bb9026"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request and response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token_Searched_Details": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token_Chain": {
+                                                    "type": "string",
+                                                    "description": "The chain of the contract/token",
+                                                    "example": "Chain"
+                                                },
+                                                "token_Address": {
+                                                    "type": "string",
+                                                    "description": "The address of the contract/token.",
+                                                    "example": "0x12343343434343434343403030303030"
+                                                },
+                                                "token_Name": {
+                                                    "type": "string",
+                                                    "description": "The name of the token.",
+                                                    "example": "Sample Token"
+                                                },
+                                                "token_Symbol": {
+                                                    "type": "string",
+                                                    "description": "The symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "similar_qhash": {
+                                                    "type": "string",
+                                                    "description": "The QHash for a similar search.",
+                                                    "example": "q-123456abc"
+                                                },
+                                                "exact_qhash": {
+                                                    "type": "string",
+                                                    "description": "The QHash for an exact search.",
+                                                    "example": "q-123456abc"
+                                                }
+                                            },
+                                            "description": "Returns basic searched token information."
+                                        },
+                                        "similar_Contracts": {
+                                            "type": "array",
+                                            "properties": {
+                                                "tokenAddress": {
+                                                    "type": "string",
+                                                    "description": "Returns the token address of the contract/token.",
+                                                    "example": "0x12343343434343434343403030303030"
+                                                },
+                                                "tokenChain": {
+                                                    "type": "string",
+                                                    "description": "Returns the chain of the contract/token.",
+                                                    "example": "chain"
+                                                },
+                                                "tokenDecimals": {
+                                                    "type": "integer",
+                                                    "description": "Returns the token decimals of the contract/token.",
+                                                    "example": 8
+                                                },
+                                                "tokenName": {
+                                                    "type": "string",
+                                                    "description": "Returns the name of the contract/token.",
+                                                    "example": "Sample Token"
+                                                },
+                                                "tokenSymbol": {
+                                                    "type": "string",
+                                                    "description": "Returns the symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "isScam": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is was manually confirmed as scam by thte Quick Intel team.",
+                                                    "example": "true"
+                                                }
+                                            },
+                                            "description": "Returns an array of the similar contracts found."
+                                        },
+                                        "exact_Contracts": {
+                                            "type": "array",
+                                            "properties": {
+                                                "tokenAddress": {
+                                                    "type": "string",
+                                                    "description": "Returns the token address of the contract/token.",
+                                                    "example": "0x12343343434343434343403030303030"
+                                                },
+                                                "tokenChain": {
+                                                    "type": "string",
+                                                    "description": "Returns the chain of the contract/token.",
+                                                    "example": "chain"
+                                                },
+                                                "tokenDecimals": {
+                                                    "type": "integer",
+                                                    "description": "Returns the token decimals of the contract/token.",
+                                                    "example": 8
+                                                },
+                                                "tokenName": {
+                                                    "type": "string",
+                                                    "description": "Returns the name of the contract/token.",
+                                                    "example": "Sample Token"
+                                                },
+                                                "tokenSymbol": {
+                                                    "type": "string",
+                                                    "description": "Returns the symbol of the contract/token.",
+                                                    "example": "SMPLTKN"
+                                                },
+                                                "isScam": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the contract is was manually confirmed as scam by thte Quick Intel team.",
+                                                    "example": "true"
+                                                }
+                                            },
+                                            "description": "Returns an array of the exact contracts found."
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "If no results found, and contract is unique",
+                                            "example": "There were no similar or exact contracts matched. This contract is unique."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "token_Searched_Details": {
+                                                "token_Chain": "Chain",
+                                                "token_Address": "0x54aaa2e0c296008e992897979078f66ddf876b86",
+                                                "token_Name": "Sample Token",
+                                                "token_Symbol": "SMPLTKN",
+                                                "similar_qhash": "q-123456abc",
+                                                "exact_qhash": "q-123456abc"
+                                            },
+                                            "similar_Contracts": [
+                                                {
+                                                    "tokenAddress": "0x54aaa2e0c296008e992897979078f66ddf876b86",
+                                                    "tokenChain": "Chain",
+                                                    "tokenDecimals": 8,
+                                                    "tokenName": "Sample Token",
+                                                    "tokenSymbol": "SMPLTKN",
+                                                    "isScam": "true"
+                                                }
+                                            ],
+                                            "exact_Contracts": [
+                                                {
+                                                    "tokenAddress": "0x54aaa2e0c296008e992897979078f66ddf876b86",
+                                                    "tokenChain": "Chain",
+                                                    "tokenDecimals": 8,
+                                                    "tokenName": "Sample Token",
+                                                    "tokenSymbol": "SMPLTKN",
+                                                    "isScam": "true"
+                                                }
+                                            ],
+                                            "message": "There were no similar or exact contracts matched. This contract is unique."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed parameters or other bad request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message (typically an invalid chain or contract or the token has not been indexed by Quick Intel)",
+                                            "example": "Quick Intel doesn't not currently have that token in its repository. Reach out to the Quick Intel Team if you have any questions."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "Quick Intel doesn't not currently have that token in its repository. Reach out to the Quick Intel Team if you have any questions."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid endpoint requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid endpoint)",
+                                            "example": "Endpoint not available"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "Endpoint not available"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid API Key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestID": {
+                                            "type": "string",
+                                            "description": "The call's request ID",
+                                            "example": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "The error message (in this case, an invalid API key)",
+                                            "example": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "requestID": "1695529617033337937-YXdzLXVzLWVhc3QtMQ==-18711fe6fa8f4f9288a6a1381e7d9c4d1cbdeddc857c4ac6b062746d7ba12345",
+                                            "message": "No data product found. Please contact your data provider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Returns the error message for an internal error",
+                                            "example": "Error retrieving results for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "result": {
+                                        "value": {
+                                            "error": "Error retrieving results for 0x6d038130b9b379a373b1d33a29d5904ed1bb9026 on ARBITRUM."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "X-QKNTL-KEY",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "x-qkntl-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

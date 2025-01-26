@@ -2,6 +2,7 @@
 description: >-
   Discover the 55+ chains and DEX(es)the Quick Intel API supports by checking
   out the list below.
+icon: link-horizontal
 ---
 
 # Supported Chains and DEX
