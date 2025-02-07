@@ -27,10 +27,12 @@ layout:
 | :star: ARBITRUM   |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | :star: BASE       |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | :star: BSC        |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
+| ABSTRACT          |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | ASTAR             |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | APECHAIN          |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | AVALANCHE         |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | BASEPOLIA         | :ballot\_box\_with\_check: |                      | :white\_check\_mark: |
+| BERACHAIN         |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | BESC              |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | BITROCK           |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
 | BLAST             |    :white\_check\_mark:    | :white\_check\_mark: | :white\_check\_mark: |
