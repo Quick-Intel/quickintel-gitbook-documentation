@@ -27,6 +27,10 @@
 * [VeriFi - Project Info](quick-intel-scanner/verifi-project-info.md)
 * [Launch Dashboard](quick-intel-scanner/launch-dashboard.md)
 
+## 🧠 Agent Studio
+
+* [Introduction](agent-studio/introduction.md)
+
 ## 🦊 MetaMask Snap
 
 * [Introduction](metamask-snap/introduction.md)
