@@ -85,6 +85,7 @@
 ## 📚 Resources
 
 * [Official Links](resources/official-links.md)
+* [Official Tator Trader Links](resources/official-tator-trader-links.md)
 * [Support & Team Contacts](resources/support-and-team-contacts.md)
 * [Roadmap](resources/roadmap.md)
 * [Policies](resources/policies.md)
