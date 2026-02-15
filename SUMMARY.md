@@ -44,6 +44,7 @@
 
 * [API Integration](developer-integration/api-integration/README.md)
   * [Introduction](developer-integration/api-integration/introduction.md)
+  * [x402 Permissionless Access](developer-integration/api-integration/x402-permissionless-access.md)
   * [🔐 API Authentication](developer-integration/api-integration/api-authentication.md)
   * [Supported Chains and DEX](developer-integration/api-integration/supported-chains-and-dex.md)
   * [API Endpoints](developer-integration/api-integration/api-endpoints/README.md)
