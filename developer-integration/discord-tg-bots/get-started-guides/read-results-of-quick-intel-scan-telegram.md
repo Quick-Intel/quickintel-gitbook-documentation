@@ -15,8 +15,7 @@ There are 5 core sections in the results of the scan, which we will dive into.
 In this section, it'll return the results if it is detected as a honeypot, if it doesn't seem like a honeypot,  or if there are warnings you should be aware of and investigate further.\
 &#xNAN;_&#x4E;ote: We can not guarantee any results are 100% safe or not. We analyze and provide the data to help you make a decision, but is ultimately your decision and_ Quick Intel _Tools should not be used for financial advice._\
 \
-When there is an alert for "POTENTIAL HIDDEN RUG/SCAM" Alert, this is to let you know there has been code detected linked to previous scams or rugs and you should assess the contract for malicious code.\
-
+When there is an alert for "POTENTIAL HIDDEN RUG/SCAM" Alert, this is to let you know there has been code detected linked to previous scams or rugs and you should assess the contract for malicious code.<br>
 
 <figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption><p>Code Alert</p></figcaption></figure>
 

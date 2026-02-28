@@ -13,8 +13,7 @@ The Quick Intel Snap is a revolutionary add-on to the popular MetaMask wallet!\
 With the MetaMask Snap, users can now access a quick token audit when interacting with DEXs and swapping for tokens.&#x20;
 
 \
-The MetaMask Snap gives users a quick overview of potential risks within the smart contract, so they can better stay protected BEFORE investing and potentially avoiding scams and rug pulls.\
-
+The MetaMask Snap gives users a quick overview of potential risks within the smart contract, so they can better stay protected BEFORE investing and potentially avoiding scams and rug pulls.<br>
 
 The Quick Intel Snap installation is extremely simple and takes just a few seconds. <mark style="color:yellow;">You can install the Snap through either of these methods:</mark>
 

@@ -53,7 +53,6 @@ Instead of just one indicator that tells you the probability of it being a scam,
 
 **ShadowShield is included in the Quick Intel's** [**All Access Tier**](../qkntl-token/tiers-and-benefits.md)**.** If you're already an All Access member, go to [the scanner](https://app.quickintel.io/scanner) and click on the ShadowShield tab of the scan results.
 
-Not a member yet? [See what other benefits are available in the Quick Intel All Access tier!](../qkntl-token/tiers-and-benefits.md)\
-
+Not a member yet? [See what other benefits are available in the Quick Intel All Access tier!](../qkntl-token/tiers-and-benefits.md)<br>
 
 With ShadowShield in your pocket, you can confidently navigate the crypto-verse, knowing that your investments are shielded from the lurking shadows of scams using the watchful eye of AI protection.

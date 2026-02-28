@@ -11,8 +11,7 @@ There are two ways to gain Tier access:
 
 **Via QKNTL Tokens**:&#x20;
 
-**Subscribe with fiat or crypto**: [https://app.quickintel.io/account?sub=true](https://app.quickintel.io/account?sub=true)\
-
+**Subscribe with fiat or crypto**: [https://app.quickintel.io/account?sub=true](https://app.quickintel.io/account?sub=true)<br>
 
 _<mark style="color:yellow;">\*Note: Users must connect their Web3 wallet for verification for all tier assignment</mark>_
 {% endhint %}

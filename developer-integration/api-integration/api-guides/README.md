@@ -9,14 +9,14 @@ icon: comment-question
 
 Jump to specific sections depending on if you are new to using the Quick Intel API or need a refresher on how to run the scan or read results!
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="/broken/pages/NLmXGEw6uLns9u0zUsnD" %}
+[Broken link](/broken/pages/NLmXGEw6uLns9u0zUsnD)
 {% endcontent-ref %}
 
 {% content-ref url="../api-authentication.md" %}
 [api-authentication.md](../api-authentication.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="/broken/pages/SlzJ5hKqZrq6qALNPjGo" %}
+[Broken link](/broken/pages/SlzJ5hKqZrq6qALNPjGo)
 {% endcontent-ref %}

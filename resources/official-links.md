@@ -26,10 +26,6 @@ description: >-
 | <mark style="color:yellow;">**SUPPORT**</mark>                  |                                                                         |
 | Submit a support ticket                                         |  [https://support.quickintel.io](https://support.quickintel.io)         |
 
-
-
-
-
 ## <mark style="color:green;">QKNTL Token</mark>
 
 You can view more information about the QKNTL token here:  [token-information.md](../qkntl-token/token-information.md "mention")
@@ -37,3 +33,17 @@ You can view more information about the QKNTL token here:  [token-information.md
 ### Contract Address:
 
 <table><thead><tr><th width="100">CHAIN</th><th width="139">INFO</th><th>CONTRACT ADDRESS</th></tr></thead><tbody><tr><td><mark style="color:yellow;">ETH</mark></td><td>Main Chain</td><td><mark style="color:yellow;">0xbcd4D5AC29E06e4973a1dDcd782cd035d04BC0b7</mark></td></tr><tr><td><mark style="color:orange;">ARB</mark></td><td>Bridged Chain</td><td><mark style="color:orange;">0xbcd4D5AC29E06e4973a1dDcd782cd035d04BC0b7</mark></td></tr></tbody></table>
+
+### Official Logos
+
+Full Transparent
+
+<figure><img src="../.gitbook/assets/quickintel_transparent.png" alt=""><figcaption></figcaption></figure>
+
+Icon Only - Transparanet
+
+<figure><img src="../.gitbook/assets/quickiLogo.png" alt=""><figcaption></figcaption></figure>
+
+Icon Only - Dark Background
+
+<figure><img src="../.gitbook/assets/quickiLogo_darkGrey.png" alt=""><figcaption></figcaption></figure>
