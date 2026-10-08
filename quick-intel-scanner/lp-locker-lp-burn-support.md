@@ -34,9 +34,10 @@ Quick Intel supports the below LP lock services:
 * SphynxLock
 * Ceres
 * ApexPad
+* Titan Finance
 {% endtab %}
 
 {% tab title="LP Burn Support" %}
-LP burns are currently only supported for Uniswap V2 token-based LP detections. _We do not currently detect V3 LP burns_
+LP burns are currently only supported for Uniswap V2 token-based LP detections, and V3/V4 NFT based LP detections.
 {% endtab %}
 {% endtabs %}
